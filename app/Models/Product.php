@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'price',
+        'stock'
+    ];
+
+    public function reduceStock($qty)
+    {
+        if ($this->stock < $qty) {
+            throw new \Exception("Stock tidak cukup");
+        }
+
+        $this->stock -= $qty;
+        $this->save();
+    }
 }
