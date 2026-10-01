@@ -10,17 +10,15 @@ class AdminMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Cek apakah user sudah login dan memiliki role 'admin'
+        // Cek apakah user sudah login dan memiliki role admin
         if (auth()->check() && auth()->user()->role === 'admin') {
             return $next($request);
         }
 
-        // Jika bukan admin, tampilkan pesan error 403 (Akses Ditolak)
+        // Jika bukan admin, tampilkan pesan error 403
         abort(403, 'Akses Ditolak! Hanya Admin yang dapat mengakses halaman ini.');
     }
 }
