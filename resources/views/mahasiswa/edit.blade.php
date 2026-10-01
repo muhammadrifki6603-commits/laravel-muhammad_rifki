@@ -7,59 +7,59 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
-                <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-                    <!-- NPM -->
-                    <div class="mb-4">
-                        <label for="npm" class="block text-gray-700 font-bold mb-2">NPM</label>
-                        <input type="text" name="npm" id="npm" value="{{ old('npm', $mahasiswa->npm) }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('npm')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <!-- NPM -->
+                        <div class="mb-4">
+                            <label for="npm" class="block text-sm font-medium text-gray-700">NPM</label>
+                            <input type="text" name="npm" id="npm" value="{{ old('npm', $mahasiswa->npm) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                            @error('npm')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <!-- Nama -->
-                    <div class="mb-4">
-                        <label for="nama" class="block text-gray-700 font-bold mb-2">Nama</label>
-                        <input type="text" name="nama" id="nama" value="{{ old('nama', $mahasiswa->nama) }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('nama')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <!-- Nama -->
+                        <div class="mb-4">
+                            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Mahasiswa</label>
+                            <input type="text" name="nama" id="nama" value="{{ old('nama', $mahasiswa->nama) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                            @error('nama')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <!-- Jurusan -->
-                    <div class="mb-4">
-                        <label for="jurusan" class="block text-gray-700 font-bold mb-2">Jurusan</label>
-                        <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan', $mahasiswa->jurusan) }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('jurusan')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <!-- Jurusan -->
+                        <div class="mb-4">
+                            <label for="jurusan" class="block text-sm font-medium text-gray-700">Jurusan</label>
+                            <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan', $mahasiswa->jurusan) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                            @error('jurusan')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <!-- Angkatan -->
-                    <div class="mb-4">
-                        <label for="angkatan" class="block text-gray-700 font-bold mb-2">Angkatan</label>
-                        <input type="number" name="angkatan" id="angkatan" value="{{ old('angkatan', $mahasiswa->angkatan) }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('angkatan')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <!-- Angkatan -->
+                        <div class="mb-6">
+                            <label for="angkatan" class="block text-sm font-medium text-gray-700">Angkatan</label>
+                            <input type="number" name="angkatan" id="angkatan" value="{{ old('angkatan', $mahasiswa->angkatan) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                            @error('angkatan')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <!-- Tombol Aksi -->
-                    <div style="margin-top: 24px; display: flex; align-items: center; gap: 16px;">
-                        <button type="submit" style="background-color: #2563eb !important; color: #ffffff !important; font-weight: bold; padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; display: inline-block;">
-                            Simpan Perubahan
-                        </button>
-                        <a href="{{ route('mahasiswa.index') }}" style="color: #4b5563; text-decoration: none;">
-                            Batal
-                        </a>
-                    </div>
-                </form>
-
+                        <!-- Tombol -->
+                        <div class="flex items-center gap-4">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 transition">
+                                Update Data
+                            </button>
+                            <a href="{{ route('mahasiswa.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest hover:bg-gray-300 transition">
+                                Batal
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

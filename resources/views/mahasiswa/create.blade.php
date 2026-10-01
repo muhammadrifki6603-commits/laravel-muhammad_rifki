@@ -1,65 +1,33 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tambah Data Mahasiswa') }}
-        </h2>
-    </x-slot>
+<form action="{{ route('mahasiswa.store') }}" method="POST">
+    @csrf
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
-                <form action="{{ route('mahasiswa.store') }}" method="POST">
-                    @csrf
-
-                    <!-- NPM -->
-                    <div class="mb-4">
-                        <label for="npm" class="block text-gray-700 font-bold mb-2">NPM</label>
-                        <input type="text" name="npm" id="npm" value="{{ old('npm') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('npm')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Nama -->
-                    <div class="mb-4">
-                        <label for="nama" class="block text-gray-700 font-bold mb-2">Nama</label>
-                        <input type="text" name="nama" id="nama" value="{{ old('nama') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('nama')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Jurusan -->
-                    <div class="mb-4">
-                        <label for="jurusan" class="block text-gray-700 font-bold mb-2">Jurusan</label>
-                        <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('jurusan')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Angkatan -->
-                    <div class="mb-4">
-                        <label for="angkatan" class="block text-gray-700 font-bold mb-2">Angkatan</label>
-                        <input type="number" name="angkatan" id="angkatan" value="{{ old('angkatan', date('Y')) }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200" required>
-                        @error('angkatan')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Tombol aksi dengan style langsung -->
-                    <div style="margin-top: 24px; display: flex; align-items: center; gap: 16px;">
-                        <button type="submit" style="background-color: #2563eb; color: #ffffff; font-weight: bold; padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer;">
-                            Simpan Data
-                        </button>
-                        <a href="{{ route('mahasiswa.index') }}" style="color: #4b5563; text-decoration: none;">
-                            Batal
-                        </a>
-                    </div>
-                </form>
-
-            </div>
-        </div>
+    <div class="mb-4">
+        <label class="block font-medium text-sm text-gray-700">NPM</label>
+        <input type="text" name="npm" value="{{ old('npm') }}" class="w-full border-gray-300 rounded-md shadow-sm" required>
+        @error('npm')
+            <span class="text-red-600 text-sm">{{ $message }}</span>
+        @enderror
     </div>
-</x-app-layout>
+
+    <div class="mb-4">
+        <label class="block font-medium text-sm text-gray-700">Nama</label>
+        <input type="text" name="nama" value="{{ old('nama') }}" class="w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block font-medium text-sm text-gray-700">Jurusan</label>
+        <input type="text" name="jurusan" value="{{ old('jurusan') }}" class="w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block font-medium text-sm text-gray-700">Angkatan</label>
+        <input type="number" name="angkatan" value="{{ old('angkatan') }}" class="w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <button type="submit" style="background-color: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">
+            Simpan Data
+        </button>
+        <a href="{{ route('mahasiswa.index') }}" class="text-gray-600 hover:underline">Batal</a>
+    </div>
+</form>
